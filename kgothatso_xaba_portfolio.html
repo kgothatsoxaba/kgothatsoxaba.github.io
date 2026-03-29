@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kgothatso Xaba – Executive Assistant Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0e0d;
+    --cream: #f5f0e8;
+    --warm: #e8dfc8;
+    --gold: #b8922a;
+    --gold-light: #d4aa4a;
+    --rust: #8b4513;
+    --muted: #6b6456;
+    --border: rgba(184,146,42,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-left {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
+  }
+
+  .header-right {
+    background: var(--ink);
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-right::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(184,146,42,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-right::after {
+    content: 'KX';
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 180px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    letter-spacing: -10px;
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 6px 14px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 40px;
+  }
+
+  .badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+
+  .name-em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .title-line {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .title-line::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .header-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 380px;
+    line-height: 1.6;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .contact-item span.icon {
+    color: var(--gold);
+    font-size: 13px;
+  }
+
+  /* Right panel stats */
+  .right-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .availability-tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 30px;
+    border-left: 2px solid var(--gold);
+    padding-left: 12px;
+  }
+
+  .right-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 40px;
+  }
+
+  .right-headline em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 40px;
+  }
+
+  .stat {
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 14px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  /* ─── SECTION GENERIC ─── */
+  section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 60px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* ─── WHAT I OFFER ─── */
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .offer-card {
+    background: var(--cream);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+
+  .offer-card:hover {
+    background: var(--warm);
+  }
+
+  .offer-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(184,146,42,0.1);
+    line-height: 1;
+  }
+
+  .offer-icon {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .offer-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .offer-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ─── TRAVEL SECTION ─── */
+  .travel-section {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 100px 0;
+    border-bottom: none;
+  }
+
+  .travel-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .travel-text .section-label {
+    color: var(--gold-light);
+  }
+
+  .travel-text .section-title {
+    color: var(--cream);
+  }
+
+  .travel-text .section-title em {
+    color: var(--gold-light);
+  }
+
+  .travel-body {
+    font-size: 14px;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .routes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .route-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.5);
+    padding: 10px 16px;
+    border: 1px solid rgba(184,146,42,0.2);
+  }
+
+  .route-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .travel-services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+    align-self: start;
+    margin-top: 60px;
+  }
+
+  .travel-service {
+    padding: 28px;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .travel-service-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .travel-service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--cream);
+  }
+
+  .travel-service-desc {
+    font-size: 11px;
+    color: rgba(245,240,232,0.4);
+    line-height: 1.6;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-block {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    padding: 50px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-block:last-child { border-bottom: none; }
+
+  .exp-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .exp-period {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .exp-role {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  /* ─── AI & TOOLS ─── */
+  .tools-section {
+    background: var(--warm);
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+
+  .tool-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+
+  .tool-chip:hover {
+    border-color: var(--gold);
+    background: var(--warm);
+  }
+
+  .tool-chip-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .automation-callout {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .automation-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--cream);
+  }
+
+  .automation-text em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .automation-tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 8px 16px;
+    white-space: nowrap;
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .skill-group-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .skill-list li {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-list li::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── CLOSING ─── */
+  .closing {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 0;
+    border-bottom: none;
+  }
+
+  .closing-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .closing-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .closing-headline em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .closing-body {
+    font-size: 13px;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.8;
+  }
+
+  .closing-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .closing-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    border: 1px solid rgba(184,146,42,0.2);
+    transition: border-color 0.2s;
+  }
+
+  .closing-contact-row:hover {
+    border-color: var(--gold);
+  }
+
+  .ccr-icon {
+    font-size: 18px;
+    width: 32px;
+  }
+
+  .ccr-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+
+  .ccr-val {
+    font-size: 13px;
+    color: rgba(245,240,232,0.8);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 24px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 800px) {
+    header { grid-template-columns: 1fr; min-height: auto; }
+    .header-right { min-height: 380px; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .travel-inner { grid-template-columns: 1fr; gap: 40px; }
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .skills-cols { grid-template-columns: 1fr; }
+    .closing-inner { grid-template-columns: 1fr; }
+    .exp-block { grid-template-columns: 1fr; gap: 20px; }
+    .container { padding: 0 24px; }
+    header .header-left, header .header-right { padding: 48px 24px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-left">
+    <div>
+      <div class="badge">Available for Remote Work</div>
+      <h1>Kgothatso<br><span class="name-em">Xaba</span></h1>
+      <div class="title-line">Remote Executive Assistant &amp; Founder Associate</div>
+      <p class="header-tagline">Operations, systems, and logistics so founders can focus on what actually moves the needle.</p>
+    </div>
+    <div class="contact-row">
+      <div class="contact-item"><span class="icon">✉</span> kgothatsoxaba@gmail.com</div>
+      <div class="contact-item"><span class="icon">📞</span> (+27) 61 437 1090</div>
+      <div class="contact-item"><span class="icon">📍</span> Johannesburg, South Africa</div>
+      <div class="contact-item"><span class="icon">🔗</span> linkedin.com/in/kgothatso-xabaa64689270</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="right-content">
+      <div class="availability-tag">Open to International Remote Roles</div>
+      <div class="right-headline">Built for founders who<br>move <em>fast</em> and think<br>in <em>systems</em>.</div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">1+</div>
+          <div class="stat-label">Year Exec Support</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">On-Time Order Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Continents Booked</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">AI</div>
+          <div class="stat-label">Native Workflow</div>
+        </div>
+      </div>
+      <a class="cta-btn" href="mailto:kgothatsoxaba@gmail.com?subject=Executive Assistant Role - Fuse">Get In Touch →</a>
+    </div>
+  </div>
+</header>
+
+<!-- ─── WHAT I BRING ─── -->
+<section>
+  <div class="container">
+    <div class="section-label">Core Competencies</div>
+    <h2 class="section-title">What I bring<br>to <em>Fuse</em></h2>
+    <div class="offer-grid">
+      <div class="offer-card fade-in" data-num="01">
+        <div class="offer-icon">✈️</div>
+        <div class="offer-title">Travel &amp; Lifestyle Management</div>
+        <div class="offer-desc">I run a travel booking service — this is lived experience, not a line on a CV. Flights, hotels, visas, restaurants, and appointments across Europe, the Middle East, and Africa. I anticipate friction before it happens.</div>
+      </div>
+      <div class="offer-card fade-in" data-num="02">
+        <div class="offer-icon">📡</div>
+        <div class="offer-title">PR &amp; Media Outreach</div>
+        <div class="offer-desc">Building visibility pipelines from scratch. I research journalists and podcasts, draft sharp outreach, and follow up without being asked. I understand how to position a founder and a brand in proptech and startup media.</div>
+      </div>
+      <div class="offer-card fade-in" data-num="03">
+        <div class="offer-icon">🤖</div>
+        <div class="offer-title">AI &amp; Automation-First</div>
+        <div class="offer-desc">I use Claude, ChatGPT, and other tools daily — not just for drafts, but to build workflows that remove repetitive work. I think in systems. If a task can be automated, I find the way.</div>
+      </div>
+      <div class="offer-card fade-in" data-num="04">
+        <div class="offer-icon">📱</div>
+        <div class="offer-title">Content &amp; Social Media</div>
+        <div class="offer-desc">Coordinating content calendars, managing freelancers, and maintaining consistency across platforms. At Eats and Bakes, I supported social media growth that directly drove customer engagement and repeat business.</div>
+      </div>
+      <div class="offer-card fade-in" data-num="05">
+        <div class="offer-icon">🗓️</div>
+        <div class="offer-title">Calendar &amp; Communications</div>
+        <div class="offer-desc">Proactive, not reactive. I protect deep work time, flag conflicts early, and keep communication flowing without waiting to be prompted. You won't need end-of-day updates — you'll hear from me as it happens.</div>
+      </div>
+      <div class="offer-card fade-in" data-num="06">
+        <div class="offer-icon">📋</div>
+        <div class="offer-title">Notion &amp; Task Management</div>
+        <div class="offer-desc">Fluent in Notion. I keep tasks organized, deadlines visible, and nothing falls through the cracks — even across multiple time zones and concurrent projects. I build the systems so you don't have to think about them.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRAVEL ─── -->
+<section class="travel-section">
+  <div class="container">
+    <div class="travel-inner">
+      <div class="travel-text">
+        <div class="section-label">Travel Expertise</div>
+        <h2 class="section-title" style="color:var(--cream);">I don't just book<br>travel. I <em>run</em> a<br>travel business.</h2>
+        <p class="travel-body">As the founder of a travel booking service, I've personally coordinated itineraries, compared pricing across platforms, navigated visa requirements, and managed logistics for clients traveling between Africa, Europe, and the Middle East.<br><br>For a founder like Marco — constantly moving between Riga, Budapest, Vienna, Cape Town, and beyond — this isn't a learning curve. It's already what I do.</p>
+        <div class="routes">
+          <div class="route-item"><span class="route-dot"></span>Europe ↔ Middle East ↔ Africa corridors</div>
+          <div class="route-item"><span class="route-dot"></span>Multi-city itinerary coordination</div>
+          <div class="route-item"><span class="route-dot"></span>Visa research &amp; documentation support</div>
+          <div class="route-item"><span class="route-dot"></span>Hotel comparison &amp; loyalty optimization</div>
+          <div class="route-item"><span class="route-dot"></span>Restaurant &amp; appointment bookings, any city</div>
+        </div>
+      </div>
+      <div>
+        <div class="travel-services">
+          <div class="travel-service">
+            <div class="travel-service-icon">🛫</div>
+            <div class="travel-service-name">Flight Booking</div>
+            <div class="travel-service-desc">Multi-stop routing, fare comparisons, rebooking on disruptions</div>
+          </div>
+          <div class="travel-service">
+            <div class="travel-service-icon">🏨</div>
+            <div class="travel-service-name">Hotel Coordination</div>
+            <div class="travel-service-desc">Price benchmarking, location strategy, extended stays</div>
+          </div>
+          <div class="travel-service">
+            <div class="travel-service-icon">🪪</div>
+            <div class="travel-service-name">Visa &amp; Docs</div>
+            <div class="travel-service-desc">Requirements research, deadline tracking, document prep</div>
+          </div>
+          <div class="travel-service">
+            <div class="travel-service-icon">🍽️</div>
+            <div class="travel-service-name">Reservations</div>
+            <div class="travel-service-desc">Restaurants, sports courts, wellness, meetings — any city</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section>
+  <div class="container">
+    <div class="section-label">Work History</div>
+    <h2 class="section-title">Experience that<br><em>translates directly</em></h2>
+
+    <div class="exp-block fade-in">
+      <div class="exp-meta">
+        <div class="exp-period">Jun 2024 – Present</div>
+        <div class="exp-company">Eats &amp; Bakes<br>by Chef Khosi</div>
+        <div class="exp-role">Administrative Assistant</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Coordinated daily scheduling, order timelines, and appointments — achieving 100% on-time order processing.</li>
+        <li>Managed all administrative documentation, invoices, and order records; reduced information retrieval time through structured filing systems.</li>
+        <li>Handled all customer communication via phone and messaging platforms — improved response times and customer satisfaction scores.</li>
+        <li>Supported social media and promotional updates, directly contributing to increased engagement and brand visibility.</li>
+        <li>Built and maintained operational records and reporting systems that supported business decision-making.</li>
+        <li>Created a professional client experience that drove repeat business and strong referral relationships.</li>
+      </ul>
+    </div>
+
+    <div class="exp-block fade-in">
+      <div class="exp-meta">
+        <div class="exp-period">Ongoing</div>
+        <div class="exp-company">Travel Booking<br>Service</div>
+        <div class="exp-role">Founder &amp; Operator</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Founded and operate an independent travel booking service, managing end-to-end trip coordination for clients.</li>
+        <li>Source and compare flights, accommodation, and ground transport across Africa, Europe, and the Middle East.</li>
+        <li>Advise clients on visa requirements, travel documentation, and itinerary optimization.</li>
+        <li>Manage client communication, bookings, and post-trip follow-up independently — building long-term client relationships.</li>
+        <li>Develop and refine systems for managing multiple concurrent bookings without errors or delays.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AI & TOOLS ─── -->
+<section class="tools-section">
+  <div class="container">
+    <div class="section-label">AI &amp; Tools</div>
+    <h2 class="section-title">AI-native.<br>Not AI-<em>curious</em>.</h2>
+    <div class="tools-grid">
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Claude (Anthropic)</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>ChatGPT / GPT-4o</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Notion AI</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Zapier / Make</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Microsoft Office Suite</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Google Workspace</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Calendar Management</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Social Media Platforms</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Booking Platforms</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Canva / Design Tools</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Prompt Engineering</div>
+      <div class="tool-chip fade-in"><span class="tool-chip-dot"></span>Workflow Automation</div>
+    </div>
+    <div class="automation-callout">
+      <div class="automation-text">I don't use AI as a shortcut. I use it to build <em>systems</em> — automations that run while I focus on what requires human judgment.</div>
+      <div class="automation-tag">AI-Native Operator</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SKILLS ─── -->
+<section>
+  <div class="container">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">Every skill this<br>role <em>actually needs</em></h2>
+    <div class="skills-cols">
+      <div class="fade-in">
+        <div class="skill-group-title">Operations</div>
+        <ul class="skill-list">
+          <li>Calendar &amp; schedule management</li>
+          <li>Document management &amp; filing</li>
+          <li>Order processing &amp; tracking</li>
+          <li>Administrative reporting</li>
+          <li>Candidate screening &amp; HR support</li>
+          <li>Multi-project task management</li>
+        </ul>
+      </div>
+      <div class="fade-in">
+        <div class="skill-group-title">Communication</div>
+        <ul class="skill-list">
+          <li>Professional written communication</li>
+          <li>Customer &amp; client relations</li>
+          <li>Proactive stakeholder updates</li>
+          <li>Media &amp; PR outreach drafting</li>
+          <li>Social media coordination</li>
+          <li>Freelancer management</li>
+        </ul>
+      </div>
+      <div class="fade-in">
+        <div class="skill-group-title">Character</div>
+        <ul class="skill-list">
+          <li>Structured and precise under pressure</li>
+          <li>Communicates before being asked</li>
+          <li>Flags problems proactively</li>
+          <li>Suggests improvements without prompting</li>
+          <li>Reliable across time zones</li>
+          <li>Founder-mentality orientation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLOSING ─── -->
+<section class="closing">
+  <div class="container">
+    <div class="closing-inner">
+      <div>
+        <h2 class="closing-headline">Ready to be the<br>person who keeps<br><em>Fuse moving</em>.</h2>
+        <p class="closing-body">Marco, you need one person who can hold the operational thread across six cities, multiple time zones, and a fast-scaling business. I've been building exactly those skills — in real operations, with real accountability, while running my own business alongside it.<br><br>I'm structured. I'm AI-native. I communicate before I'm asked. And I'm ready to go.</p>
+      </div>
+      <div class="closing-contacts">
+        <div class="closing-contact-row">
+          <div class="ccr-icon">✉️</div>
+          <div>
+            <div class="ccr-label">Email</div>
+            <div class="ccr-val">kgothatsoxaba@gmail.com</div>
+          </div>
+        </div>
+        <div class="closing-contact-row">
+          <div class="ccr-icon">📞</div>
+          <div>
+            <div class="ccr-label">Phone / WhatsApp</div>
+            <div class="ccr-val">(+27) 61 437 1090</div>
+          </div>
+        </div>
+        <div class="closing-contact-row">
+          <div class="ccr-icon">🔗</div>
+          <div>
+            <div class="ccr-label">LinkedIn</div>
+            <div class="ccr-val">linkedin.com/in/kgothatso-xabaa64689270</div>
+          </div>
+        </div>
+        <div class="closing-contact-row">
+          <div class="ccr-icon">📍</div>
+          <div>
+            <div class="ccr-label">Location</div>
+            <div class="ccr-val">Johannesburg, South Africa — Remote-ready</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Kgothatso Xaba © 2025</span>
+  <span>Remote Executive Assistant &amp; Founder Associate</span>
+</footer>
+
+<script>
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
